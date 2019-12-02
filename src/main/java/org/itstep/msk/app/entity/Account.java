@@ -20,19 +20,19 @@ public class Account {
      * хозяин счёта
      */
     @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "parent", referencedColumnName = "id")
-    private User parent;
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    private User owner;
 
 
     public int getNumber() {
         return number;
     }
 
-    public User getParent() {
-        return parent;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setParent(User parent) {
-        this.parent = parent;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
