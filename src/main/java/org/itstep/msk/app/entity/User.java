@@ -25,8 +25,12 @@ public class User {
     /**
      * счета
      */
-    @OneToMany(targetEntity = Account.class, mappedBy = "user_id")
+    @OneToMany(targetEntity = Account.class, mappedBy = "parent")
     private Set<Account> accounts;
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Set<Account> getAccounts() {
         return accounts;
