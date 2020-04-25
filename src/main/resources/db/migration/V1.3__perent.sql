@@ -1,2 +1,2 @@
 ALTER TABLE account DROP COLUMN user_id;
-ALTER TABLE account ADD COLUMN parent INT NOT NULL REFERENCES user (id);
+ALTER TABLE account ADD COLUMN parent INT NOT NULL REFERENCES users (id);

@@ -1,9 +1,13 @@
 package org.itstep.msk.app.entity;
 
+
+import org.itstep.msk.app.entity.numberСard.NumberCart;
+
 import javax.persistence.*;
 
+
 /**
- * карта, ноа привязывается к счету
+ * карта, привязывается к счету
  */
 @Entity
 @Table(name = "carts")
@@ -14,10 +18,11 @@ public class Cart {
     private int id;
 
     /**
-     * номнр карты (логика еще не реализована)
+     * номнр карты
      */
-    @Column (name = "number_cart")
-    private int numberCart;
+    @OneToOne(targetEntity = NumberCart.class)
+    @JoinColumn(name = "number_cart_id", referencedColumnName = "id")
+    private NumberCart numberCart;
 
     /**
      * родитель карты
@@ -30,11 +35,11 @@ public class Cart {
         return id;
     }
 
-    public int getNumberCart() {
+    public NumberCart getNumberCart() {
         return numberCart;
     }
 
-    public void setNumberCart(int numberCart) {
+    public void setNumberCart(NumberCart numberCart) {
         this.numberCart = numberCart;
     }
 
@@ -45,4 +50,5 @@ public class Cart {
     public void setOwner(Account owner) {
         this.owner = owner;
     }
+
 }

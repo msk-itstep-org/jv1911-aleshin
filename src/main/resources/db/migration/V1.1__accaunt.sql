@@ -1,5 +1,5 @@
 CREATE TABLE account (
 numbers INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 balance INT ,
-user_id INT NOT NULL REFERENCES user (id)
+user_id INT NOT NULL REFERENCES users (id)
 );
