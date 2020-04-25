@@ -1,5 +1,6 @@
 package org.itstep.msk.app.configuration;
 
+import org.itstep.msk.app.entity.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -45,10 +46,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/login").permitAll()
-//                .antMatchers("/admin/**").hasRole(Role.ROLE_ADMIN.name())
-//                .antMatchers("/user/**").hasRole(Role.ROLE_USER.name())
-//                .anyRequest().authenticated();
-                .anyRequest().permitAll();
+                .antMatchers("/admin/**").hasAnyAuthority(Role.ROLE_ADMIN.name())
+                .antMatchers("/user/**").hasAnyAuthority(Role.ROLE_USER.name())
+                .anyRequest().authenticated();
 
         http.csrf().disable();
 

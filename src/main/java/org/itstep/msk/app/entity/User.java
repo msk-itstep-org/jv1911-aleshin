@@ -40,6 +40,10 @@ public class User {
     @OneToMany(targetEntity = Account.class, mappedBy = "owner")
     private Set<Account> accounts;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

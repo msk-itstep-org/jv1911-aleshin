@@ -3,7 +3,6 @@ package org.itstep.msk.app.entity;
 import org.itstep.msk.app.entity.enums.TypeTransaction;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "history_transaction")
