@@ -6,14 +6,14 @@
 </head>
 <body>
 <h1>Регистрация</h1>
-<form action="@{/registration}" method="post">
+<form th:action="@{/registration}" method="post">
     <p>
-        Имя :
-        <input type="text" >
+        Имя пользователя :
+        <input  type="text" name="username">
     </p>
     <p>
         Пароль :
-        <input type="password" >
+        <input type="password" name="password">
     </p>
     <p>
         <button type="submit" value="Submit">Зарегистрироваться</button>

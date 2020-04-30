@@ -13,7 +13,8 @@ import javax.persistence.*;
 public class NumberCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column
+    private Integer id;
 
     /**
      * тип платежной системы
@@ -49,7 +50,7 @@ public class NumberCart {
     @OneToOne(targetEntity = Cart.class, mappedBy = "numberCart")
     private Cart cart;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

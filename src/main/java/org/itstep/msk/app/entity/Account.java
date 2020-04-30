@@ -16,7 +16,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "numbers")
-    private int number;
+    private Integer number;
 
     /**
      * хозяин счёта
@@ -31,7 +31,7 @@ public class Account {
     @OneToMany(targetEntity = Cart.class, mappedBy = "owner")
     private Set<Cart> carts;
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 

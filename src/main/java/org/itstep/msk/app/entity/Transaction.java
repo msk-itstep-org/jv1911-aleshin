@@ -8,8 +8,9 @@ import javax.persistence.*;
 @Table(name = "history_transaction")
 public class Transaction {
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     /**
      * id юзера которому пренадлежит транзакция
@@ -39,7 +40,7 @@ public class Transaction {
     @Enumerated(EnumType.STRING)
     private TypeTransaction typeTransaction;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

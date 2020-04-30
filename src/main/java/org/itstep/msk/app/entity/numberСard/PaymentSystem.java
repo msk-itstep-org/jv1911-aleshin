@@ -13,13 +13,14 @@ import java.util.Set;
 public class PaymentSystem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column
+    private Integer id;
 
     /**
      * номер платежной системы в номере карты от 1 до 9
      */
     @Column(name = "numbers")
-    private int number;
+    private Integer number;
 
     /**
      *название платежной системы
@@ -31,7 +32,7 @@ public class PaymentSystem {
     @Column(name = "numbers_cart")
     private Set<NumberCart> numbersCart;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

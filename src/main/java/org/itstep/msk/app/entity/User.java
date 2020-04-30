@@ -13,7 +13,7 @@ public class User {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     /**
      * логин
      */
@@ -28,9 +28,17 @@ public class User {
     /**
      * список ролей пользовотеля
      */
-    @ElementCollection (targetClass = Role.class)
-    @CollectionTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")})
-    @Column(name = "role")
+    @ElementCollection(targetClass = Role.class)
+    @CollectionTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id",
+                    nullable = false,
+                    columnDefinition = "INT UNSIGNED",
+                    referencedColumnName = "id"
+            )
+    )
+    @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
@@ -40,12 +48,9 @@ public class User {
     @OneToMany(targetEntity = Account.class, mappedBy = "owner")
     private Set<Account> accounts;
 
-    
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-
 
     public String getUsername() {
         return username;

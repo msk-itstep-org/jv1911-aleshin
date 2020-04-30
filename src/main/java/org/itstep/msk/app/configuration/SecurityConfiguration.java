@@ -6,16 +6,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import javax.sql.DataSource;
-import java.util.Objects;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private DataSource dataSource;
@@ -24,13 +22,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // Запрос пользователя для аутентификации
-        String usersQuery = "SELECT username, password, 1 as active FROM users WHERE email = ?";
+        String usersQuery = "SELECT username, password, 1 FROM users WHERE username = ?";
         // Запрос ролей пользователя для авторизации
-        String authoritiesQuery =
-                "SELECT u.username, ur.role "
-                        + "FROM users u "
-                        + "INNER JOIN user_roles ur ON ur.user_id = u.id "
-                        + "WHERE u.username = ?";
+        String authoritiesQuery = "SELECT u.username, ur.role "
+                + "FROM users u "
+                + "INNER JOIN user_roles ur ON ur.user_id = u.id "
+                + "WHERE u.username = ?";
 
         // Настраиваем аутентификацию и авторизацию через БД (JDBC)
         auth.jdbcAuthentication()

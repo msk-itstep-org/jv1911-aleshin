@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <title>Вход на сайт</title>
+</head>
+<body>
+<header th:replace="~{fragment::header(${activeSection})}"></header>
+    <div class="ml-5">
+        <figure class="figure">
+            <img src="static/images/family-login.png" class="figure-img img-fluid rounded" alt="...">
+            <figcaption class="figure-caption">A caption for the above image.</figcaption>
+        </figure>
+        <div class="ml-5">
+            <form method="post" class=" m-5 p-3 shadow col-2 bg-white rounded">
+                <div class="form-group">
+                    <label >Введите логин</label>
+                    <input type="text" class="form-control" name="username"/>
+                </div>
+                <div class="form-group">
+                    <label>Введите пароль</label>
+                    <input type="password" class="form-control" name="password"/>
+                </div>
+                <button type="submit" class="col-8 btn btn-success btn-block">Войти</button>
+                <div>
+                    <a th:href = "@{/registration}">Регистрация ></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

@@ -15,7 +15,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int id;
+    private Integer id;
 
     /**
      * номнр карты
@@ -31,7 +31,7 @@ public class Cart {
     @JoinColumn(name = "owner_id", referencedColumnName = "numbers")
     private Account owner;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
