@@ -1,10 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <title>Админка</title>
 </head>
-<body>
-<h1>Admin</h1>
+<body style="background-image:url(
+https://www.studiopigeon.com/uploads/media/portfolio_gallery/0001/02/inside-the-signal_1060.jpeg
+);
+ background-size:cover; height: 800px;">
+<header th:replace="~{fragment::header(${activeSection})}"></header>
+<div class="container">
+    <div class="row">
+        <div class="col-2 border-right border-primary">
+            <nav class="navbar p-0 bg-transparent">
+                <button  class="navbar-brand btn p-0 m-0 btn-link btn-block" id = "addCart">список карт</button>
+                <button  class="navbar-brand btn p-0 m-0 btn-link btn-block" id = "getClient">список клиентов</button>
+            </nav>
+        </div>
+        <div class="col-lg-8 " id = "carts">
+</div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+<script>
+function listOutputUser(headerName, listObject){
+    let teg = $('<ul class="list-group"></ul>');
+    teg.append($('<li class="list-group-item list-group-item-action list-group-item-dark"></li>').text(headerName));
+    for (var prop in listObject){
+        var a = listObject[prop];
+        teg.append($('<li class="list-group-item list-group-item-info"></li>').text(a.username));
+    }
+    $("#carts").empty();
+    $("#carts").append(teg);
+}
+
+$("#getClient").click(
+    function(){
+        $.ajax({
+             url: "/listClient",
+             method: "get",
+             success: function (responses){
+                let st2 = "Список клиентов...";
+                listOutputUser(st2, responses);
+             }
+        });
+    }
+);
+
+function listOutput(headerName, listObject){
+    let teg = $('<ul class="list-group"></ul>');
+    teg.append($('<li class="list-group-item list-group-item-action list-group-item-dark"></li>').text(headerName));
+    for (var prop in listObject){
+        var a = listObject[prop];
+        teg.append($('<li class="list-group-item list-group-item-info"></li>').text(a.name));
+    }
+    $("#carts").empty();
+    $("#carts").append(teg);
+}
+
+$("#addCart").click(
+    function(){
+        $.ajax({
+             url: "/listCaps",
+             method: "get",
+             success: function (response){
+                let st1 = "Список карт...";
+                listOutput(st1, response);
+             }
+        });
+    }
+);
+
+
+</script>
 </body>
 </html>

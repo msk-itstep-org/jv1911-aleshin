@@ -1,22 +1,35 @@
 <header th:fragment="header(activeSection)">
-    <nav class="navbar navbar-expand-lg navbar-light  mb-2 bg-info text-white" >
-        <a class="navbar-brand" href="№">
-            <img src="https://svgsilh.com/png-512/2022689-cddc39.png" width="50" height="50" alt="">
+    <nav class="navbar navbar-expand-lg navbar-light  mb-2 bg-transparent text-white shadow sticky-top" >
+        <a class="navbar-brand" href="/">
+            <img src="https://svgsilh.com/png-512/2022689-cddc39.png" width="40" height="40" alt="">
         </a>
         <font class="navbar-brand">
             <font size="4" class="text-warning" face="CURSIVE"><font size="6" class="text-primary">F</font>BANK</font>
         </font>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!-------------------------------------------------------------------------------------------------------------------->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="navbar-nav ml-auto">
+<!-------------------------------------------------------------------------------------------------------------------->
+        <ul class="navbar-nav ml-light text-primary">
+            <li class="nav-item" sec:authorize="hasRole('ROLE_USER')">
+                <a th:href ="@{/user/}" class="nav-link text-primary">Личный кабинет</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{/admin/}" class="nav-link text-primary">Админка</a>
+            </li>
+        </ul>
+<!-------------------------------------------------------------------------------------------------------------------->
+        <ul class="navbar-nav ml-auto text-primary">
             <li class="nav-item">
-                <a th:href="@{/login}" class="nav-link">Войти</a>
+                <a th:href="@{/login}" class="nav-link text-warning">Войти |</a>
             </li>
             <li class="nav-item">
-                <a th:href="@{/registration}" class="nav-link">Зарегистрироваться</a>
+                <a th:href="@{/registration}" class="nav-link text-warning">Зарегистрироваться</a>
             </li>
         </ul>
     </nav>
 </header>
+<div class="ml-auto" sec:authorize="isAuthenticated()">
+    <span class="navbar-text" sec:authentication="name"></span>
+</div>

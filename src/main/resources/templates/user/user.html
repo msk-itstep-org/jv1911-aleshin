@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
     <title>Title</title>
 </head>
-<body>
-<h1>личный кобинет!</h1>
-<span th:text = "${name.usernem}"></span>
+<body style="background-image:url(
+https://dmdou83.edumsko.ru/uploads/1700/1629/section/109387/.thumbs/6719bb12bad0d9d9e6588e1299dd9a83.jpg?1541484130527
+);
+background-size:cover;
+height: 800px;">
+<header th:replace="~{fragment::header(${activeSection})}"></header>
+<div class="container">
+    <div class="row">
+        <div class="col-8 list-group-item list-group-item-dark">Номера счетов...
+            <ul class="list-group " th:each="account : ${accounts}" >
+                    <li class="list-group-item list-group-item-info" th:text="${account.number}" ></li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>

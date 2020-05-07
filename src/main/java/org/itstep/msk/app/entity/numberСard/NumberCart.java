@@ -33,8 +33,16 @@ public class NumberCart {
     private int numberBank;
 
     /**
-     * номер карты состоит из 9 цифр
+     * помер продукта у карты 2 знака
      */
+    @ManyToOne(targetEntity = ProductNumber.class)
+    @JoinColumn(name = "card_product_number_id", referencedColumnName = "id")
+    private ProductNumber cardProductNumber;
+
+    /**
+     * номер карты user состоит из 7 цифр
+     */
+
     @Column(name = "numbers")
     private int number;
 
@@ -68,6 +76,14 @@ public class NumberCart {
 
     public void setNumberBank(int numberBank) {
         this.numberBank = numberBank;
+    }
+
+    public ProductNumber getCardProductNumber() {
+        return cardProductNumber;
+    }
+
+    public void setCardProductNumber(ProductNumber cardProductNumber) {
+        this.cardProductNumber = cardProductNumber;
     }
 
     public int getNumber() {

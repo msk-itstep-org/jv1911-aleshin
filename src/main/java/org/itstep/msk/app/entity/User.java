@@ -46,7 +46,7 @@ public class User {
      * счета пользователя
      */
     @OneToMany(targetEntity = Account.class, mappedBy = "owner")
-    private Set<Account> accounts;
+    private Set<Account> accounts = new HashSet<>();
 
     public Integer getId() {
         return id;
