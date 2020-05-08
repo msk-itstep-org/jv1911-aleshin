@@ -9,6 +9,7 @@ public class ContactInformation {
     @Id@Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     /**
      * фамилия
      */

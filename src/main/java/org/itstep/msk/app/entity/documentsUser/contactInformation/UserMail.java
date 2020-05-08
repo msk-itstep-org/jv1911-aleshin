@@ -13,7 +13,7 @@ public class UserMail {
      * название имейла
      */
     @Column(name = "names")
-    private String name;
+    private String nameMail;
 
     @ManyToOne(targetEntity = ContactInformation.class)
     @JoinColumn(name = "contact_information_id", referencedColumnName = "id")
@@ -23,12 +23,12 @@ public class UserMail {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameMail() {
+        return nameMail;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameMail(String nameMail) {
+        this.nameMail = nameMail;
     }
 
     public ContactInformation getContactInformation() {
