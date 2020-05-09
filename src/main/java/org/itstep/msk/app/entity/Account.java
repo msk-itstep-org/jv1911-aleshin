@@ -1,6 +1,8 @@
 package org.itstep.msk.app.entity;
 
 import javax.persistence.*;
+import java.util.Set;
+
 
 /**
  * счёт
@@ -13,8 +15,8 @@ public class Account {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int number;
+    @Column(name = "numbers")
+    private Integer number;
 
     /**
      * хозяин счёта
@@ -23,8 +25,13 @@ public class Account {
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private User owner;
 
+    /**
+     * карты привязанные к счету
+     */
+    @OneToMany(targetEntity = Cart.class, mappedBy = "owner")
+    private Set<Cart> carts;
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
@@ -34,5 +41,13 @@ public class Account {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
     }
 }

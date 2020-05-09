@@ -1,0 +1,54 @@
+<div action="#" th:fragment="passport(passportForm)">
+    <div class="container p-2">
+        <form  th:action="@{/personalDataForm}" th:object="${form}" method="post" class="border border-muted rounded p-3" style="background: repeat-y #FAFAD2;">
+            <div>
+                <div><h1><p class="font-weight-bold text-secondary">Контактная информация</p></h1></div>
+                <div class="row">
+                    <div class="col form-group">
+                        <input id="surname" class="form-control form-control-lg my-3 shadow" type="text" th:field="*{surname}" placeholder="Фамилия">
+                        <input id="name" class="form-control form-control-lg my-3 shadow" type="text" th:field="*{name}" placeholder="Имя">
+                        <input id="patronymic" class="form-control form-control-lg my-3 shadow" type="text" th:field="*{patronymic}" placeholder="Отчество">
+                    </div>
+                    <div class="col form-group">
+                        <input id="Telephone" class="form-control form-control-lg my-3 shadow" type="text" th:field="*{Telephone}" placeholder="Номер телефона">
+                        <input id="mail" class="form-control form-control-lg my-3 shadow" type="text" th:field="*{mail}" placeholder="@mail">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div><h1><p class="font-weight-bold text-secondary">Паспортные данные</p></h1></div>
+                <div class="row">
+                    <input id="dateBirth" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{dateBirth}" placeholder="Дата рождения">
+                    <input id="placeBirth" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{placeBirth}" placeholder="Место рождения">
+                </div>
+                <div class="row">
+                    <input id="series" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{series}" placeholder="Серия паспорта">
+                    <input id="number" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{number}" placeholder="Номер паспорта">
+                    <input id="dateIssue" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{dateIssue}" placeholder="Дата выдачи паспорта">
+                </div>
+                <div class="row">
+                    <input id="whoIssued" class="form-control form-control-lg m-3 shadow" type="text" th:field="*{whoIssued}" placeholder="Кем выдан">
+                    <input id="divisionCode" class="form-control form-control-lg m-3 shadow" type="text" th:field="*{divisionCode}" placeholder="Код подразделения">
+                </div>
+            </div>
+            <div>
+                <div><h1><p class="font-weight-bold text-secondary">Адрес постоянной регистрации</p></h1></div>
+                <div class="row">
+                    <input id="index" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{index}" placeholder="Индекс">
+                    <input id="region" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{region}" placeholder="Регион">
+                </div>
+                <div class="row">
+                    <input id="city" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{city}" placeholder="Город">
+                    <input id="street" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{street}" placeholder="Улица">
+                </div>
+                <div class="row">
+                    <input id="house" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{house}" placeholder="Дом">
+                    <input id="building" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{building}" placeholder="Корпус">
+                    <input id="apartment" class="col form-control form-control-lg m-3 shadow" type="text" th:field="*{apartment}" placeholder="Квартира">
+                </div>
+            </div>
+            <div><h1><p class="font-weight-bold text-secondary">Адрес фактического проживания</p></h1></div>
+            <button class="btn btn-warning btn-lg my-3 shadow" type="submit"> Далее... </button>
+        </form>
+    </div>
+</div>
